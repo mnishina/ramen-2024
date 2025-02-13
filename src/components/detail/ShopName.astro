@@ -1,0 +1,16 @@
+---
+const { name } = Astro.props;
+---
+
+<div
+  set:html={name}
+  class="text-vw-104 tracking-tighter leading-none place-self-start opacity-0"
+  id="shopName"
+/>
+
+<style lang="scss">
+  div {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+  }
+</style>

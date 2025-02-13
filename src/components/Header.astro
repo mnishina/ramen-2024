@@ -1,0 +1,17 @@
+---
+import SiteTitle from "~/components/common/SiteTitle.astro";
+import SiteSubTitle from "~/components/common/SiteSubTitle.astro";
+import SiteDescription from "~/components/list/SiteDescription.astro";
+
+const { meta } = Astro.props;
+---
+
+<header class="mb-8 grid aspect-[1440/532]">
+  <SiteTitle
+    text={meta.SITE_TITLE}
+    englishText={meta.SITE_TITLE_EN}
+    scene="list"
+  />
+  <SiteSubTitle text={meta.SITE_SUBTITLE} scene="list" />
+  <SiteDescription text={meta.SITE_DESCRIPTION} />
+</header>

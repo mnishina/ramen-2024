@@ -1,0 +1,19 @@
+---
+import { replaceBR } from "~script/common/util";
+
+const { address } = Astro.props;
+---
+
+<div
+  set:html={replaceBR(address)}
+  class="text-vw-40 tracking-tighter leading-none opacity-0"
+  id="address"
+/>
+
+<style lang="scss">
+  div {
+    grid-column: 1 / -1;
+    grid-row: -1 / -2;
+    place-self: end start;
+  }
+</style>

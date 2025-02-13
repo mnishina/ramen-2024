@@ -1,0 +1,19 @@
+---
+const { index, name, address } = Astro.props;
+---
+
+<div class="enText opacity-30">
+  <div class="flex flex-col gap-2 text-vw-10 pl-4 leading-tight">
+    <div class="dataIndex" data-index={index}></div>
+    <div class="dataName" data-name={name}></div>
+    <div class="dataAddress" data-address={address}></div>
+  </div>
+</div>
+
+<style lang="scss">
+  .enText {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    place-self: center start;
+  }
+</style>

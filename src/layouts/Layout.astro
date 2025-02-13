@@ -1,0 +1,38 @@
+---
+import CommonHead from "~/components/common/CommonHead.astro";
+import LoadingDisplay from "~/components/common/LoadingDisplay.astro";
+import Bg from "~/components/common/Bg.astro";
+import Cursor from "~/components/common/Cursor.astro";
+
+import "@fontsource/shippori-antique-b1";
+import "lenis/dist/lenis.css";
+
+const { meta, pageType } = Astro.props;
+
+const bodyClass = pageType === "list" ? "overscroll-none leading-none" : "";
+---
+
+<script>
+  import "~script/app";
+</script>
+
+<html lang="ja" transition:animate="none">
+  <head>
+    <CommonHead meta={meta} />
+  </head>
+  <body class:list={["selection:bg-black selection:text-white", { bodyClass }]}>
+    <main data-element="main">
+      <slot />
+    </main>
+
+    <LoadingDisplay />
+    <Bg />
+    <Cursor />
+  </body>
+</html>
+
+<style>
+  body::-webkit-scrollbar {
+    display: none;
+  }
+</style>

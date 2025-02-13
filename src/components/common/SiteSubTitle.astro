@@ -1,0 +1,38 @@
+---
+const { text, scene } = Astro.props;
+---
+
+{
+  scene === "list" ? (
+    <div
+      id="siteSubTitle_list"
+      class="[writing-mode:vertical-rl] pr-1 lg:pr-4 pt-1 lg:pt-2 text-xs lg:text-vw-24 tracking-tight leading-none opacity-0"
+      data-element="siteSubTitle"
+    >
+      {text}
+    </div>
+  ) : (
+    <div
+      id="siteSubTitle_detail"
+      class="[writing-mode:vertical-rl] text-vw-15 tracking-normal mt-4 leading-none opacity-0"
+    >
+      {text}
+    </div>
+  )
+}
+
+<style lang="scss">
+  #siteSubTitle_list {
+    text-orientation: upright;
+    grid-column: -1 / 1;
+    grid-row: 1 / -1;
+    place-self: start end;
+  }
+
+  #siteSubTitle_detail {
+    text-orientation: upright;
+    grid-column: -3 / 1;
+    grid-row: 1 / -1;
+    place-self: start end;
+  }
+</style>

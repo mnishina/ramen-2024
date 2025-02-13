@@ -1,0 +1,40 @@
+---
+const { text, englishText = undefined, scene } = Astro.props;
+---
+
+{
+  scene === "list" ? (
+    <h1
+      id="siteTitle_list"
+      class="text-vw-96 tracking-tighter relative leading-none opacity-0"
+      data-element="siteTitle"
+    >
+      {text}
+      <span class="aaa absolute right-1 bottom-[-1em] text-[10px] tracking-wider translate-y-full">
+        {englishText}
+      </span>
+    </h1>
+  ) : (
+    <div id="siteTitle_detail" class="text-vw-80 opacity-0">
+      <a href="/">
+        <span class="absolute rotate-90 origin-top-left whitespace-nowrap tracking-tighter leading-none">
+          {text}
+        </span>
+      </a>
+    </div>
+  )
+}
+
+<style lang="scss">
+  #siteTitle_list {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    place-self: start start;
+  }
+
+  #siteTitle_detail {
+    grid-column: -1 / 1;
+    grid-row: 1 / -1;
+    place-self: start end;
+  }
+</style>

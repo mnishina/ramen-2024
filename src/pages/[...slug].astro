@@ -1,0 +1,81 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import SiteTitle from "~/components/common/SiteTitle.astro";
+import SiteSubTitle from "~/components/common/SiteSubTitle.astro";
+import ShopName from "~/components/detail/ShopName.astro";
+import RamenImage from "~/components/detail/RamenImage.astro";
+import Date from "~/components/detail/Date.astro";
+import Address from "~/components/detail/Address.astro";
+import EnText from "~/components/detail/EnText.astro";
+
+import { db, meta } from "~/db/db";
+
+export async function getStaticPaths() {
+  return db.map(
+    (
+      {
+        date,
+        name,
+        address,
+        imagePath,
+        ramenImage: { aspectRatio },
+        enText: { name: enName, address: enAddress },
+      },
+      i,
+    ) => {
+      const slug = date.replace(/\./g, "");
+      const index = i + 1;
+
+      return {
+        params: { slug },
+        props: {
+          index,
+          date,
+          name,
+          address,
+          imagePath,
+          aspectRatio,
+          enName,
+          enAddress,
+        },
+      };
+    },
+  );
+}
+
+const {
+  index,
+  date,
+  name,
+  address,
+  imagePath,
+  aspectRatio,
+  enName,
+  enAddress,
+} = Astro.props;
+---
+
+<Layout meta={meta} pageType="detail">
+  <canvas
+    class="fixed z-1 left-0 top-0 w-full h-full pointer-events-none"
+    data-element="detailCanvas"
+  >
+  </canvas>
+
+  <div class="z-2 fixed left-0 top-0 size-full">
+    <div class="grid grid-cols-detail grid-rows-detail size-full">
+      <SiteTitle text={meta.SITE_TITLE} scene="detail" />
+      <SiteSubTitle text={`${meta.SITE_SUBTITLE}`} scene="detail" />
+      <ShopName name={name} />
+      <Date date={date} />
+      <Address address={address} />
+      <EnText index={index} name={enName} address={enAddress} />
+      <RamenImage
+        date={date}
+        name={name}
+        imagePath={imagePath}
+        aspectRatio={aspectRatio}
+      />
+    </div>
+  </div>
+</Layout>

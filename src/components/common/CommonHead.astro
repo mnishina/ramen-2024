@@ -1,0 +1,18 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+const { meta } = Astro.props;
+---
+
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex" />
+
+<meta name="viewport" content="width=device-width" />
+<meta
+  name="description"
+  content=`${meta.SITE_SUBTITLE} ${meta.SITE_DESCRIPTION.P1} ${meta.SITE_DESCRIPTION.P2}`
+/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<title>{meta.SITE_TITLE} | {meta.SITE_TITLE_EN}</title>
+
+<ClientRouter />

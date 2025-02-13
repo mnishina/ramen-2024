@@ -1,0 +1,17 @@
+---
+const { date } = Astro.props;
+---
+
+<div id="date" class="opacity-0 grid">
+  <span
+    class="text-vw-80 text-right tracking-tighter leading-none place-self-end"
+    >{date}</span
+  >
+</div>
+
+<style lang="scss">
+  div {
+    grid-column: -1 / 1;
+    grid-row: -1 / -2;
+  }
+</style>

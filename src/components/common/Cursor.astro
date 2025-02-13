@@ -1,0 +1,89 @@
+---
+
+---
+
+<div
+  data-element="cursor"
+  transition:name="cursor"
+  transition:persist
+  class="pointer-events-none opacity-0 w-fit h-fit fixed z-10 left-0 top-0 hidden lg:block"
+>
+  <svg viewBox="0 0 128 128" class="grid place-content-center">
+    <path d="
+    M
+    0,64
+    a
+    64,64
+    0
+    1,1
+    0,1
+    z" id="circle"
+    ></path>
+    <text>
+      <textPath xlink:href="#circle" data-element="textPath"></textPath>
+    </text>
+  </svg>
+
+  <style lang="scss">
+    div[data-element="cursor"] {
+      transition:
+        opacity 0.3s ease-out,
+        transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      width: 128px;
+      height: 128px;
+
+      &.show {
+        opacity: 1;
+
+        svg {
+          overflow: visible;
+          width: 100%;
+          height: 100%;
+          scale: 0.2;
+          transition: scale 0.3s ease-out;
+          mix-blend-mode: difference;
+
+          path {
+            fill: #000;
+          }
+
+          text {
+            fill: rgba(0, 0, 0, 0.7);
+            scale: 1.08;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            font-size: 14px;
+            transform-origin: center;
+            transition: opacity 0.3s ease-out;
+            animation: rollingText 6s linear 0s infinite;
+          }
+        }
+        &.active {
+          svg {
+            scale: 1;
+
+            path {
+              opacity: 0.1;
+              fill: #fff;
+            }
+
+            text {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    @keyframes rollingText {
+      0% {
+        rotate: 0;
+      }
+
+      100% {
+        rotate: 360deg;
+      }
+    }
+  </style>
+</div>

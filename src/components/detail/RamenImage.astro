@@ -1,0 +1,30 @@
+---
+import { stripBR } from "~script/common/util";
+
+const { date, name, imagePath, aspectRatio } = Astro.props;
+---
+
+<div class="row-span-full col-span-full grid place-items-center">
+  <div
+    class="flex items-center justify-center"
+    style={`width: clamp(1px, calc(1112 / 1440 * 100vw), 1440px); height: clamp(1px, calc(714 / 1024 * 100vh), 1024px);`}
+  >
+    <a
+      href="/"
+      data-cursorText="Back"
+      data-cursorTextLength="back"
+      data-link="detail"
+      class="inline-block max-w-full max-h-full"
+      style=`aspect-ratio: ${aspectRatio};`
+    >
+      <img
+        data-image="webgl"
+        src={`${imagePath}`}
+        alt={`${date} ${stripBR(name)}`}
+        loading="eager"
+        class="opacity-0 inline-block max-w-full max-h-full"
+        style=`aspect-ratio: ${aspectRatio};`
+      />
+    </a>
+  </div>
+</div>

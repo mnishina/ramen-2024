@@ -1,0 +1,48 @@
+---
+import type { DB } from "~script/type/";
+import { Image } from "astro:assets";
+
+const { db } = Astro.props;
+---
+
+<ul class="grid gap-y-16 grid-cols-2 md:grid-cols-3">
+  {
+    db.map((d: DB) => {
+      return (
+        <li>
+          <a
+            href={`${d.date.replace(/\./g, "")}`}
+            data-link="list"
+            data-cursorText=`${d.enText.name}`
+            data-cursorTextLength=`${d.enText.nameLength}`
+            class="block"
+          >
+            <Image
+              src={`${d.imagePath}`}
+              alt={`${d.name.replace(/<br\s*\/?>/gi, " ")}`}
+              width="300"
+              height="200"
+              class="opacity-0 w-full"
+              loading={"eager"}
+              data-image="list"
+            />
+            <div class="pt-2 pr-1 text-right opacity-0" data-element="listText">
+              <h2
+                set:html={d.name.replace(/<br\s*\/?>/gi, " ")}
+                class="text-vw-12 md:text-vw-14 tracking-tighter"
+              />
+              <span class="text-vw-12 tracking-tighter inline-block pt-1">
+                {d.date}
+              </span>
+            </div>
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+<canvas
+  id="listCanvas"
+  class="fixed -z-10 left-0 top-0 w-full h-full pointer-events-none"
+>
+</canvas>

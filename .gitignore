@@ -1,0 +1,51 @@
+# エディタ/IDE
+.vscode/
+.idea/
+.DS_Store
+
+# 依存関係
+node_modules/
+/vendor/
+package-lock.json
+yarn.lock
+composer.lock
+
+# ビルド出力
+/dist/
+/build/
+/.next/
+/.nuxt/
+.cache/
+.parcel-cache/
+.output/
+
+# 環境設定
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# ログ
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# システムファイル
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# テスト関連
+/coverage/
+.nyc_output/
+
+# その他
+*.bak
+*.swp
+*.swo
+.temp/
+.astro
+.vercel
+temp
