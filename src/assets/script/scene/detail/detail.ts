@@ -44,7 +44,6 @@ function init() {
   detail.$canvasRect = detail.$canvas.getBoundingClientRect();
 
   _setDOMElement();
-  _backLink();
 }
 
 async function createMesh({
@@ -199,20 +198,4 @@ async function _enTextAnimation() {
   });
 }
 
-function _backLink() {
-  const backLink = document.querySelector('[data-link="detail"]');
-  backLink?.addEventListener("click", (e) => {
-    e.preventDefault();
-    // 同一サイトからの遷移か確認
-    if (
-      document.referrer &&
-      new URL(document.referrer).origin === window.location.origin
-    ) {
-      history.back();
-    } else {
-      // ユーザーが直接アクセスした場合のフォールバック先（例：トップページ）
-      window.location.href = "/";
-    }
-  });
-}
 export default detail;
