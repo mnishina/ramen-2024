@@ -49,6 +49,7 @@ document.addEventListener("astro:before-swap", () => {
   base.material = null;
   base.renderer = null;
   base.camera = null;
+  base.composer = null;
 });
 
 document.addEventListener("astro:page-load", async () => {

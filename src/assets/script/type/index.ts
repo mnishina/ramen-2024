@@ -11,6 +11,7 @@ import {
   Mesh,
   Clock,
 } from "three";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 
 interface DB {
   date: string;
@@ -56,6 +57,7 @@ interface Base {
   geometry: PlaneGeometry | null;
   material: ShaderMaterial | null;
   renderer: WebGLRenderer | null;
+  composer: EffectComposer | null;
   camera: PerspectiveCamera | null;
   cameraInfo: {
     fov: number | null;

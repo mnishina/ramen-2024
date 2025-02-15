@@ -9,6 +9,10 @@ import {
   WebGLRenderer,
   RepeatWrapping,
 } from "three";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
+
 import {
   getCanvasInfo,
   getCameraFOV,
@@ -23,6 +27,7 @@ const base: Base = {
   geometry: null,
   material: null,
   renderer: null,
+  composer: null,
   camera: null,
   cameraInfo: {
     fov: null,
@@ -85,6 +90,17 @@ function setupComposition(
       uTime: { value: 0 },
     },
   });
+
+  base.composer = new EffectComposer(base.renderer);
+  if (setupScene === "list") {
+    const listRenderPass = new RenderPass(base.listScene, base.camera);
+    base.composer.addPass(listRenderPass);
+  } else {
+    const detailRenderPass = new RenderPass(base.detailScene, base.camera);
+    base.composer.addPass(detailRenderPass);
+  }
+  const filmPass = new FilmPass(0.2, 0.1, 0, false);
+  base.composer.addPass(filmPass);
 }
 
 function createMeshFunction({

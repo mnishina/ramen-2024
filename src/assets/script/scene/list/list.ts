@@ -82,7 +82,7 @@ function render() {
     object.material.uniforms.uTime.value = elapsedTime;
   });
 
-  base.renderer.render(base.listScene!, base.camera);
+  base.composer?.render();
 
   requestAnimationFrame(render);
 }
