@@ -27,8 +27,19 @@ document.addEventListener("astro:before-preparation", (event) => {
 });
 
 document.addEventListener("astro:before-swap", () => {
-  clearScene(base.listScene!);
-  clearScene(base.detailScene!);
+  const isRoot = getPage().isRoot;
+
+  if (isRoot) {
+    clearScene(base.detailScene!);
+    detail.meshStore = [];
+    detail.$dataImages = null;
+    detail.$canvas = null;
+  } else {
+    clearScene(base.listScene!);
+    list.meshStore = [];
+    list.$dataImages = null;
+    list.$canvas = null;
+  }
 
   base.renderer!.dispose();
   base.renderer!.forceContextLoss();
@@ -38,14 +49,6 @@ document.addEventListener("astro:before-swap", () => {
   base.material = null;
   base.renderer = null;
   base.camera = null;
-
-  list.meshStore = [];
-  list.$dataImages = null;
-  list.$canvas = null;
-
-  detail.meshStore = [];
-  detail.$dataImages = null;
-  detail.$canvas = null;
 });
 
 document.addEventListener("astro:page-load", async () => {
