@@ -12,6 +12,8 @@ import {
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { FilmPass } from "three/examples/jsm/postprocessing/FilmPass";
+import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
+import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader";
 
 import {
   getCanvasInfo,
@@ -99,8 +101,17 @@ function setupComposition(
     const detailRenderPass = new RenderPass(base.detailScene, base.camera);
     base.composer.addPass(detailRenderPass);
   }
-  const filmPass = new FilmPass(0.2, 0.1, 0, false);
+  const filmPass = new FilmPass(0.15, 0.1, 2048, false);
   base.composer.addPass(filmPass);
+
+  // FXAA Pass の追加でアンチエイリアス効果を適用
+  const fxaaPass = new ShaderPass(FXAAShader);
+  const fxaaMaterial = (fxaaPass as any).material;
+  fxaaMaterial.uniforms["resolution"].value.set(
+    (1 / $canvas.width) * window.devicePixelRatio,
+    (1 / $canvas.height) * window.devicePixelRatio,
+  );
+  base.composer.addPass(fxaaPass);
 }
 
 function createMeshFunction({

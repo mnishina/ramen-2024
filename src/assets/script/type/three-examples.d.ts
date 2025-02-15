@@ -49,3 +49,28 @@ declare module "three/examples/jsm/postprocessing/FilmPass" {
     ): void;
   }
 }
+
+declare module "three/examples/jsm/postprocessing/ShaderPass" {
+  import { WebGLRenderer, WebGLRenderTarget } from "three";
+
+  export class ShaderPass {
+    constructor(shader: any);
+    render(
+      renderer: WebGLRenderer,
+      writeBuffer: WebGLRenderTarget,
+      readBuffer: WebGLRenderTarget,
+      deltaTime?: number,
+      maskActive?: boolean,
+    ): void;
+  }
+}
+
+declare module "three/examples/jsm/shaders/FXAAShader" {
+  export const FXAAShader: {
+    uniforms: {
+      resolution: { value: any };
+    };
+    vertexShader: string;
+    fragmentShader: string;
+  };
+}
