@@ -10,7 +10,8 @@ const { date, name, imagePath, aspectRatio } = Astro.props;
     style={`width: clamp(1px, calc(1112 / 1440 * 100vw), 1440px); height: clamp(1px, calc(714 / 1024 * 100vh), 1024px);`}
   >
     <a
-      href="/"
+      href="#"
+      onclick="event.preventDefault(); window.history.back();"
       data-cursorText="Back"
       data-cursorTextLength="back"
       data-link="detail"
