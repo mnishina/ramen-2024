@@ -1,9 +1,7 @@
 import type { CreateMesh, MeshStore, Detail } from "~script/type";
 
-import { Mesh, Scene, ShaderMaterial } from "three";
 import gsap from "gsap";
 
-import { app } from "~script/app";
 import base from "~script/common/base";
 import list from "~script/scene/list/list";
 import events from "~script/common/events";

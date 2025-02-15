@@ -2,7 +2,7 @@ import type { App } from "~script/type";
 
 import { Texture } from "three";
 import gsap from "gsap";
-import { db, meta, noiseImageA, noiseImageB } from "~/db/db";
+import { db, noiseImageA, noiseImageB } from "~/db/db";
 import loader from "~script/common/loader";
 import scroller from "~script/common/scroller";
 import cursor from "~script/common/cursor";

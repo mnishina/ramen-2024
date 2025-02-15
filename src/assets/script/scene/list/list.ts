@@ -5,7 +5,7 @@ import type {
   List,
 } from "~script/type/";
 
-import { Clock, Scene } from "three";
+import { Clock } from "three";
 import gsap from "gsap";
 import { meta } from "~/db/db";
 
