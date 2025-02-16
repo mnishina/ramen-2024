@@ -1,6 +1,6 @@
 # Ramen 2024
 
-https://raaamen2024.vercel.app/
+https://ramen-2024.vercel.app/
 
 ## About
 
