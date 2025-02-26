@@ -31,6 +31,7 @@ const list: List = {
   $canvasRect: new DOMRect(),
   clock: new Clock(),
   meshStore: [],
+  animationFrameId: null,
 };
 
 function init() {
@@ -84,7 +85,7 @@ function render() {
 
   base.composer?.render();
 
-  requestAnimationFrame(render);
+  list.animationFrameId = requestAnimationFrame(render);
 }
 
 function setupEvents() {

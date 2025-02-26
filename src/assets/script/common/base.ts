@@ -101,7 +101,7 @@ function setupComposition(
     const detailRenderPass = new RenderPass(base.detailScene, base.camera);
     base.composer.addPass(detailRenderPass);
   }
-  const filmPass = new FilmPass(0.15, 0.1, 2048, false);
+  const filmPass = new FilmPass(0.05, 0.025, 2048, false);
   base.composer.addPass(filmPass);
 
   // FXAA Pass の追加でアンチエイリアス効果を適用

@@ -40,9 +40,30 @@ document.addEventListener("astro:before-swap", () => {
     list.$dataImages = null;
     list.$canvas = null;
   }
+  // レンダリングループを停止
+  if (list.animationFrameId) {
+    cancelAnimationFrame(list.animationFrameId);
+    list.animationFrameId = null;
+  }
+  if (detail.animationFrameId) {
+    cancelAnimationFrame(detail.animationFrameId);
+    detail.animationFrameId = null;
+  }
 
-  base.renderer!.dispose();
-  base.renderer!.forceContextLoss();
+  // Three.jsリソースの適切な破棄
+  if (base.renderer) {
+    base.renderer.dispose();
+    base.renderer.forceContextLoss();
+  }
+
+  if (base.geometry) base.geometry.dispose();
+  if (base.material) base.material.dispose();
+
+  // コンポーザーの破棄
+  if (base.composer) {
+    (base.composer as any).dispose();
+  }
+
   base.listScene = null;
   base.detailScene = null;
   base.geometry = null;

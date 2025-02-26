@@ -20,6 +20,7 @@ const detail: Detail = {
   $dataImages: null,
   $canvasRect: new DOMRect(),
   meshStore: [],
+  animationFrameId: null,
   $: {
     bg: null,
     siteTitle: null,
@@ -79,7 +80,7 @@ function render() {
 
   base.composer?.render();
 
-  requestAnimationFrame(render);
+  detail.animationFrameId = requestAnimationFrame(render);
 }
 
 function setupEvents() {

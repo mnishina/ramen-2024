@@ -119,6 +119,7 @@ interface List {
   $canvasRect: DOMRect;
   clock: Clock;
   meshStore: (MeshStore | undefined)[];
+  animationFrameId: null | number;
 }
 
 interface Detail {
@@ -131,6 +132,7 @@ interface Detail {
   $dataImages: null | NodeListOf<Element>;
   $canvasRect: DOMRect;
   meshStore: (MeshStore | undefined)[];
+  animationFrameId: null | number;
   $: {
     bg: Element | null;
     siteTitle: Element | null;
