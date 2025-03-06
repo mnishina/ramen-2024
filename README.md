@@ -16,6 +16,6 @@ A practice piece for a programming and the WebGL.
 
 ## Awards
 
-- Honorable Mention [Awwards](https://www.awwwards.com/sites/ramen2024)
-- Special Kudos [CSS Design Awards](https://www.cssdesignawards.com/sites/ramen2024/47087/)
-- STAR [CSS WINNER](https://www.csswinner.com/details/ramen2024/18512)
+- Honorable Mention *[Awwards](https://www.awwwards.com/sites/ramen2024)*
+- Special Kudos *[CSS Design Awards](https://www.cssdesignawards.com/sites/ramen2024/47087/)*
+- STAR *[CSS WINNER](https://www.csswinner.com/details/ramen2024/18512)*
