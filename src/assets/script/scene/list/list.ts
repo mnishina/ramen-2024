@@ -23,11 +23,13 @@ const list: List = {
   setupEvents,
   show,
   siteDescriptionAnimation,
+  hideAwwwardsRibbon,
   $canvas: null,
   $dataImages: null,
   $siteTitle: null,
   $siteSubTitle: null,
   $listText: null,
+  $awwwardsRibbon: null,
   $canvasRect: new DOMRect(),
   clock: new Clock(),
   meshStore: [],
@@ -42,6 +44,9 @@ function init() {
   list.$siteTitle = document.querySelector("[data-element='siteTitle']");
   list.$siteSubTitle = document.querySelector("[data-element='siteSubTitle']");
   list.$listText = document.querySelectorAll("[data-element='listText']");
+  list.$awwwardsRibbon = document.querySelectorAll(
+    "[data-element='awwwardsRibbon']",
+  );
 
   if (!list.$canvas || !list.$dataImages) return;
 
@@ -184,6 +189,7 @@ function _showListMesh(resolve: unknown) {
       duration: 1.2,
       ease: "power2.inOut",
       onComplete: () => {
+        _showAwwardsRibbon();
         resolve;
       },
     });
@@ -208,6 +214,29 @@ async function siteDescriptionAnimation(text: SiteDescription) {
     index: 0,
     paragraph: paragraph[1] as HTMLElement,
     text: text.P2,
+  });
+}
+
+function _showAwwardsRibbon() {
+  const awwwardsRibbonTL = gsap.timeline();
+
+  awwwardsRibbonTL
+    .set(list.$awwwardsRibbon, {
+      x: "-100%",
+      y: "-50%",
+    })
+    .to(list.$awwwardsRibbon, {
+      x: "0",
+      y: "-50%",
+      duration: 0.6,
+      ease: "power2.inOut",
+    });
+}
+
+function hideAwwwardsRibbon() {
+  gsap.to(list.$awwwardsRibbon, {
+    x: "-100%",
+    y: "-50%",
   });
 }
 

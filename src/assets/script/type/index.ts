@@ -111,11 +111,13 @@ interface List {
   setupEvents: () => void;
   show: () => void;
   siteDescriptionAnimation: (text: SiteDescription) => void;
+  hideAwwwardsRibbon: () => void;
   $canvas: null | HTMLCanvasElement;
   $dataImages: null | NodeListOf<Element>;
   $siteTitle: null | HTMLElement;
   $siteSubTitle: null | HTMLElement;
   $listText: null | NodeListOf<Element>;
+  $awwwardsRibbon: null | NodeListOf<Element>;
   $canvasRect: DOMRect;
   clock: Clock;
   meshStore: (MeshStore | undefined)[];

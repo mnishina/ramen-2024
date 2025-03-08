@@ -6,6 +6,7 @@ import Cursor from "~/components/common/Cursor.astro";
 
 import "@fontsource/shippori-antique-b1";
 import "lenis/dist/lenis.css";
+import AwwwardsRibbon from "~/components/list/AwwwardsRibbon.astro";
 
 const { meta, pageType } = Astro.props;
 
@@ -28,6 +29,7 @@ const bodyClass = pageType === "list" ? "overscroll-none leading-none" : "";
     <LoadingDisplay />
     <Bg />
     <Cursor />
+    <AwwwardsRibbon />
   </body>
 </html>
 

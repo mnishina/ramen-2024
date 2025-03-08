@@ -169,6 +169,8 @@ function _showCursor() {
 
 async function leaveTransition() {
   return new Promise((resolve) => {
+    list.hideAwwwardsRibbon();
+
     const leaveTransitionTL = gsap.timeline();
     leaveTransitionTL.to(document.querySelector("[data-element='main']"), {
       delay: 0.05,
